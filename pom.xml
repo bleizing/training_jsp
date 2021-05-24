@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+ 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		
+		<app.version>1.0.0</app.version>
+		<app.group>com.bleizing</app.group>
+		
+		<app.compiler.group>org.apache.maven.plugins</app.compiler.group>
+		<app.compiler.artifact>maven-ear-plugin</app.compiler.artifact>
+		<app.compiler.version>2.10.1</app.compiler.version>
+	</properties>
+	
+	
+  	<packaging>war</packaging>
+
+	<groupId>${app.group}</groupId>
+	<artifactId>training_jsp</artifactId>
+	<version>${app.version}</version>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>opensymphony</groupId>
+		<artifactId>sitemesh</artifactId>
+		<version>2.4.2</version>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.2</version>
+		<scope>provided</scope>
+	</dependency>
+  </dependencies>
+  
+  <build>
+		<defaultGoal>clean package</defaultGoal>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>${app.compiler.group}</groupId>
+				<artifactId>${app.compiler.artifact}</artifactId>
+				<version>${app.compiler.version}</version>
+
+				<configuration>
+					<skinnyWars>true</skinnyWars>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<generateApplicationXml>true</generateApplicationXml>
+					<earSourceDirectory>EarContent</earSourceDirectory>
+					<modules>
+						<webModule>
+							<groupId>${app.group}</groupId>
+							<artifactId>web</artifactId>
+							<contextRoot>/web</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
