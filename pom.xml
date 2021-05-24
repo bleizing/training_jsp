@@ -7,9 +7,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		
-		<app.version>1.0.0</app.version>
-		<app.group>com.bleizing</app.group>
-		
 		<app.compiler.group>org.apache.maven.plugins</app.compiler.group>
 		<app.compiler.artifact>maven-ear-plugin</app.compiler.artifact>
 		<app.compiler.version>2.10.1</app.compiler.version>
@@ -18,9 +15,9 @@
 	
   	<packaging>war</packaging>
 
-	<groupId>${app.group}</groupId>
+	<groupId>com.bleizing</groupId>
 	<artifactId>training_jsp</artifactId>
-	<version>${app.version}</version>
+	<version>1.0.0</version>
   
   <dependencies>
   	<dependency>
@@ -35,6 +32,13 @@
 		<version>2.2</version>
 		<scope>provided</scope>
 	</dependency>
+	
+	<dependency>
+        <groupId>com.thoughtworks.xstream</groupId>
+        <artifactId>xstream</artifactId>
+        <version>1.4.13</version>
+    </dependency>
+    
   </dependencies>
   
   <build>
@@ -61,7 +65,7 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>${app.compiler.group}</groupId>
 				<artifactId>${app.compiler.artifact}</artifactId>
 				<version>${app.compiler.version}</version>
@@ -74,12 +78,25 @@
 					<modules>
 						<webModule>
 							<groupId>${app.group}</groupId>
-							<artifactId>web</artifactId>
+							<artifactId>training_jsp</artifactId>
 							<contextRoot>/web</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
-			</plugin>
+			</plugin> -->
+			
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>3.3.1</version>
+		        <configuration>
+		          <archive>
+		            <manifest>
+		              <addClasspath>true</addClasspath>
+		            </manifest>
+		          </archive>
+		        </configuration>
+	      </plugin>
 		</plugins>
 	</build>
 </project>

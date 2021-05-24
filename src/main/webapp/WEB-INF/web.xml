@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <display-name>web</display-name>
+    <!-- <listener>
+        <listener-class>net.myinfosys.web.listeners.AdminSessionListener</listener-class>
+    </listener>
+   <listener>
+       <listener-class>net.myinfosys.web.listeners.ServletSchedulerListener</listener-class>
+   </listener>
+   <listener>
+       <listener-class>net.myinfosys.web.listeners.StartupContextListener</listener-class>
+   </listener> -->
+   <context-param>
+	<!--group scheduler yang di load oleh ServletSchedulerListener -->
+          <param-name>scheduler-group</param-name>
+          <param-value>admins</param-value>
+   </context-param>
+   
+ 	<!-- <filter>
+        <filter-name>variable-injector</filter-name>
+        <filter-class>net.myinfosys.web.filters.VariableInjectorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>variable-injector</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> -->
+
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/pages/*</url-pattern>
+    </filter-mapping>
+    <!-- <context-param>
+        parameter yang digunakan oleh StartupContextListener
+        <param-name>classes</param-name>
+        <param-value>net.myinfosys.bristar.managers.SysConfigManager,net.myinfosys.bristar.managers.ThreadExecutor</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>json-servlet</servlet-name>
+        <servlet-class>net.myinfosys.servlet.json.portal.JsonServletPortal</servlet-class>
+        <init-param>
+            <param-name>packages</param-name>
+            <param-value>net.myinfosys.bristar.web.admins.json.controller</param-value>
+        </init-param>
+        <init-param>
+            <param-name>logger</param-name>
+            <param-value>portallog</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>json-servlet</servlet-name>
+        <url-pattern>/json/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>html-servlet</servlet-name>
+        <servlet-class>net.myinfosys.servlet.html.HtmlServlet</servlet-class>
+        <init-param>
+            <param-name>packages</param-name>
+            <param-value>net.myinfosys.bristar.web.admins.html.controllers</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>html-servlet</servlet-name>
+        <url-pattern>/pages/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>singleton-servlet</servlet-name>
+        <servlet-class>net.myinfosys.bean.SingletonInitServlet</servlet-class>
+        <init-param>
+            <param-name>packages</param-name>
+            <param-value>net.myinfosys.bristar.managers</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>singleton-servlet</servlet-name>
+        <url-pattern>/singleton/*</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>net.myinfosys.servlet.json.portal.HttpSessionEventListenerPortal</listener-class>
+    </listener> -->
+
+    <!-- <jsp-config>
+        <taglib>
+            <taglib-uri>http://www.opensymphony.com/sitemesh/decorator</taglib-uri>
+            <taglib-location>/WEB-INF/sitemesh-decorator.tld</taglib-location>
+        </taglib>
+    </jsp-config> -->
+</web-app>
