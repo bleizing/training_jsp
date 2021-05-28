@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+"http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="dec" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Config Portal</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="${ctx}/assets/plugins/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="${ctx}/assets/plugins/fonts-awesome/font-awesome.min.css">
+<link rel="stylesheet" href="${ctx}/assets/adminlte/css/AdminLTE.css">
+<link rel="stylesheet" href="${ctx}/assets/adminlte/css/skins/_all-skins.css">
+<style>
+
+.cimb-logo-header{
+	background-image: url(${ctx}/assets/images/header_agent_portal.jpg);
+    background-size: 100% 100%;
+    height: 74px;
+}
+</style>
+</head>
+<body class="hold-transition skin-red-light sidebar-mini">
+	<script type="text/javascript">
+		document['context']="${ctx }";
+	</script>
+
+	<script type="text/javascript" src="${ctx }/scripts/jquery/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="${ctx }/scripts/json/json.js"></script>
+	<script type="text/javascript" src="${ctx }/assets/plugins/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${ctx }/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="${ctx }/assets/plugins/fastclick/fastclick.js"></script>
+	<script type="text/javascript" src="${ctx }/assets/adminlte/js/app.js"></script>
+	
+<div class="wrapper">
+	<div class="cimb-logo-header">
+		<div style="display:none"></div>
+	</div>
+  <header class="main-header">
+    <a href="../../index2.html" class="logo">
+      <span class="logo-mini"><b>C</b>P</span>
+      <span class="logo-lg"><b>Config</b> Portal</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">Alexander Pierce</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="header">MENU NAVIGATION</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> <span>Home</span></a></li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-building-o"></i>
+            <span>Business Configuration</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="bankManager"><i class="fa fa-circle-o"></i> Bank Manager</a></li>
+            <li><a href="branchManager"><i class="fa fa-circle-o"></i> Branch Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Merchant Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Terminal Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Notification Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Biller Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> ID Type Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Country Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Currency Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Trx Purpose Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Rekpon Product Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Error Message Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Block Reason Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Configure Permission</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Fee Confogurationr</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> SVA Limit</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> SOF Permission</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Trx Ammount Limit</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-bookmark-o"></i>
+            <span>App Configuration</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="bankManager"><i class="fa fa-circle-o"></i> Batch Configuration</a></li>
+            <li><a href="branchManager"><i class="fa fa-circle-o"></i> USSD Configuration</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> SMS Menu Configuration</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Terminal Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> SMS Syntax</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Challenge Question</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> System Configuration</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-lock"></i>
+            <span>Security Configuration</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="bankManager"><i class="fa fa-circle-o"></i> User Agent Manager</a></li>
+            <li><a href="branchManager"><i class="fa fa-circle-o"></i> User Branch Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Blacklist M-Pin &amp; Pass</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Role Manager</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Security Configuration</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Blank page
+        <small>it all starts here</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <dec:body></dec:body>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; CIMB NIAGA</strong>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>

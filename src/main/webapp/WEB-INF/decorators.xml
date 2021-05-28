@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE decorators>
+<decorators defaultdir="/WEB-INF/layouts/">
+
+	<excludes>
+		<pattern>/pages/file*</pattern>
+	</excludes>
+
+	<decorator name="login-theme" page="layout_login.jsp">
+		<pattern>/pages/login</pattern>
+		<pattern>/WEB-INF/pages/login.jsp</pattern>
+	</decorator>
+
+	<decorator name="changePass-theme" page="layout_login.jsp">
+		<pattern>/pages/changePassword</pattern>
+		<pattern>/WEB-INF/pages/changePassword.jsp</pattern>
+	</decorator>
+
+	<decorator name="auth-theme" page="layout_auth.jsp">
+		<pattern>/pages/auth/*</pattern>
+		<pattern>/WEB-INF/pages/auth/*</pattern>
+	</decorator>
+
+	<decorator name="main-theme" page="layout_main.jsp">
+		<pattern>/pages/*</pattern>
+		<pattern>/WEB-INF/pages/*</pattern>
+	</decorator>
+
+</decorators>
