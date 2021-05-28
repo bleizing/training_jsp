@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bleizing.logging.Logging;
 import com.bleizing.servlet.ServletForward;
 import com.bleizing.util.ClassUtil;
 
@@ -30,6 +31,8 @@ public class HtmlServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 8086986036140406102L;
+	
+	private final Logging _log = new Logging().setClass(this.getClass()).setMethod("HtmlServlet");
 
 	/**
 	 * 
@@ -38,11 +41,10 @@ public class HtmlServlet extends HttpServlet {
 
 	
 	public void init(final ServletConfig config) throws ServletException {
+		
 		super.init(config);
-
-
-//		WebSocketMessaging.run();
-
+		
+		_log.append("init").appendLine();
 		
 		final Set<String> _packageSet = this.breakPackage(config.getInitParameter("packages"));
 		final Set<String> _classSet = new HashSet<String>();
@@ -89,6 +91,7 @@ public class HtmlServlet extends HttpServlet {
 	 * 
 	 */
 	protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) {
+		_log.append("doGet").appendLine();
 		this.doPost(req, resp);
 	}
 
@@ -96,14 +99,16 @@ public class HtmlServlet extends HttpServlet {
 	 * 
 	 */
 	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) {
-//		final Logging _log = new ApplicationLogging().setClass(this.getClass()).setMethod("doPost");
-//
+		_log.append("doPost").appendLine();
+		_log.append("request info: ").append(req).appendLine();
+		
 		try {
 //			if (null == req || null == resp) {
 //				throw new ProcessException(null,ErrorType.INVALID_REQUEST_MODEL);
 //			}
 //
 			final String _ptInfo = req.getPathInfo();
+			_log.append("path:" + _ptInfo).appendLine();
 //			if (null == _ptInfo) {
 //				throw new ProcessException(null,ErrorType.PATH_NOT_FOUND);
 //			}
@@ -183,12 +188,12 @@ public class HtmlServlet extends HttpServlet {
 //
 			_fwd.forward(this, req, resp);
 //			
-//			_log.info();
+			_log.info();
 		} catch (final Exception e) {
-//			_log.append("").append(e).appendLine().error();
+			_log.append("").append(e).appendLine().error();
 
 //			if (AppSetting.PRINT_STACKTRACE) {
-//				e.printStackTrace(System.out);
+				e.printStackTrace(System.out);
 //			}
 		}
 	}

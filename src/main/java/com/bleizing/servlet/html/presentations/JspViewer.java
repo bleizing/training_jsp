@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bleizing.logging.Logging;
 //import com.bleizing.AppSetting;
 //import com.bleizing.exception.ProcessException;
 import com.bleizing.servlet.ServletForward;
@@ -15,6 +16,8 @@ import com.bleizing.servlet.ServletForward;
 public class JspViewer extends ServletForward {
 
 	protected final String jspFile;
+	
+	private final Logging _log = new Logging().setClass(this.getClass()).setMethod("JspViewer");
 	
 	public JspViewer(final String jspFile) {
 		this.jspFile = jspFile;
@@ -29,10 +32,12 @@ public class JspViewer extends ServletForward {
 				throw new FileNotFoundException("unable to find viewer file '" + this.jspFile + "'");
 			}
 			
+			_log.append("forward to : " + jspFile);
+			_log.info();
 			_jsp.forward(req, resp);
 		} catch (final Exception e) {
 //			if (AppSetting.PRINT_STACKTRACE) {
-//				e.printStackTrace(System.out);
+				e.printStackTrace(System.out);
 //			}
 		}
 

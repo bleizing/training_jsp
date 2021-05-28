@@ -11,7 +11,7 @@
 		<pattern>/WEB-INF/pages/login.jsp</pattern>
 	</decorator>
 
-	<!-- <decorator name="changePass-theme" page="layout_login.jsp">
+	<decorator name="changePass-theme" page="layout_login.jsp">
 		<pattern>/pages/changePassword</pattern>
 		<pattern>/WEB-INF/pages/changePassword.jsp</pattern>
 	</decorator>
@@ -19,7 +19,7 @@
 	<decorator name="auth-theme" page="layout_auth.jsp">
 		<pattern>/pages/auth/*</pattern>
 		<pattern>/WEB-INF/pages/auth/*</pattern>
-	</decorator> -->
+	</decorator>
 
 	<decorator name="main-theme" page="layout_main.jsp">
 		<pattern>/pages/*</pattern>
