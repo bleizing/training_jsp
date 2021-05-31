@@ -12,11 +12,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.bleizing.logging.Logging;
+
 /**
  * @author nuriman
  * austraramadhan
  */
 public class VariableInjectorFilter implements Filter {
+	private final Logging _log = new Logging().setClass(this.getClass()).setMethod("VariableInjectorFilter");
 
     /**
      *
@@ -34,6 +37,7 @@ public class VariableInjectorFilter implements Filter {
      */
     public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
         try {
+        	_log.append("doFilter").appendLine();
             final HttpServletRequest _req = (HttpServletRequest) request;
             final HttpSession _session = _req.getSession();
             _req.setAttribute("ctxIP", _req.getLocalAddr());
@@ -41,6 +45,7 @@ public class VariableInjectorFilter implements Filter {
             _req.setAttribute("ctxAssets", _req.getContextPath().concat("/assets"));
             _req.setAttribute("ctxJsModules", _req.getContextPath().concat("/scripts/jsmodules"));
             _req.setAttribute("reqTid", new Date().getTime());
+            _log.append("ctx = " + _req.getAttribute("ctx")).appendLine();
 //            final Object _userObj = _session.getAttribute(InfosysConstants.SESSION.SESSION_LOGIN_USER);
 //            if (_userObj instanceof UserEntity) {
 //                final UserEntity _user = (UserEntity) _userObj;
@@ -51,6 +56,7 @@ public class VariableInjectorFilter implements Filter {
 //                }
 //                _req.setAttribute("userName", _fullname.toString());
 //            }
+            _log.info();
             chain.doFilter(request, response);
         } catch (final Throwable t) {
             t.printStackTrace(System.out);
