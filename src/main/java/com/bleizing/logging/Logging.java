@@ -315,7 +315,7 @@ public class Logging {
 				for (int i = _elems.length - 1; i >= 0; i--) {
 					final StackTraceElement _elem = _elems[i];
 					final String _classname = _elem.getClassName();
-					if (_classname.startsWith("net.myinfosys")) {
+					if (_classname.startsWith("com.bleizing")) {
 						_lastIdx = i;
 						break;
 					}

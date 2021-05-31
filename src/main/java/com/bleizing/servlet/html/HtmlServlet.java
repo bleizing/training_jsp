@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bleizing.exception.ErrorType;
+import com.bleizing.exception.ProcessException;
 import com.bleizing.logging.Logging;
 import com.bleizing.servlet.ServletForward;
 import com.bleizing.util.ClassUtil;
@@ -103,19 +105,19 @@ public class HtmlServlet extends HttpServlet {
 		_log.append("request info: ").append(req).appendLine();
 		
 		try {
-//			if (null == req || null == resp) {
-//				throw new ProcessException(null,ErrorType.INVALID_REQUEST_MODEL);
-//			}
+			if (null == req || null == resp) {
+				throw new ProcessException(null,ErrorType.INVALID_REQUEST_MODEL);
+			}
 //
 			final String _ptInfo = req.getPathInfo();
 			_log.append("path:" + _ptInfo).appendLine();
-//			if (null == _ptInfo) {
-//				throw new ProcessException(null,ErrorType.PATH_NOT_FOUND);
-//			}
-//
-//			if (!HtmlServlet.HTML_CONTROLLERS.containsKey(_ptInfo)) {
-//				throw new ProcessException(null,ErrorType.PATH_NOT_FOUND);
-//			}
+			if (null == _ptInfo) {
+				throw new ProcessException(null,ErrorType.PATH_NOT_FOUND);
+			}
+
+			if (!HtmlServlet.HTML_CONTROLLERS.containsKey(_ptInfo)) {
+				throw new ProcessException(null,ErrorType.PATH_NOT_FOUND);
+			}
 //
 			HttpSession session = req.getSession();
 //
@@ -125,7 +127,9 @@ public class HtmlServlet extends HttpServlet {
 //
 			final HtmlHandler _service = (HtmlHandler) _instance;
 			final ServletForward _fwd = _service.process();
-//			session.setAttribute("trigDate", new Date().getTime());
+			_log.append("session trigDate : " + session.getAttribute("trigDate")).appendLine();
+			session.setAttribute("trigDate", new Date().getTime());
+			_log.append("session id : " + session.getId()).appendLine();
 //			if (!AppSetting.IGNORE_LOGIN) {
 //				IgnoreLogin _ignoreLogin = _classImpl.getAnnotation(IgnoreLogin.class);
 //

@@ -23,7 +23,7 @@ public class DecoratorMapper extends ConfigDecoratorMapper {
 			this.conf = new ConfigLoader(_xmlFile, config);
 		} catch (final Exception e) {
 //			if (AppSetting.PRINT_STACKTRACE) {
-//				e.printStackTrace(System.out);
+				e.printStackTrace(System.out);
 //			}
 
 			throw new InstantiationException(e.toString());
@@ -44,7 +44,7 @@ public class DecoratorMapper extends ConfigDecoratorMapper {
 			
 		} catch (final Exception e) {
 //			if (AppSetting.PRINT_STACKTRACE) {
-//				e.printStackTrace(System.out);
+				e.printStackTrace(System.out);
 //			}
 		}
 
